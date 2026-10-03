@@ -28,7 +28,7 @@ En Cloudflare Pages: conectar este repositorio, rama `main`, comando `node build
 
 Se solicita un anuncio únicamente al elegir siguiente nivel o repetir tras una victoria, a partir de dos partidas completadas y con al menos dos minutos entre solicitudes. Durante la solicitud se bloquea la interacción y se suspende el audio; un error o falta de inventario permite continuar. Las pistas y deshacer siguen siendo gratuitos. Fuera de CrazyGames el SDK no se carga en la distribución web.
 
-La integración tiene pruebas automáticas con SDK simulado. Falta validación con el SDK real y la herramienta de previsualización del portal antes de solicitar aprobación comercial. No se promete un ingreso mínimo ni aceptación.
+La integración tiene pruebas automáticas con SDK simulado y una comprobación local con SDK real: anuncio de prueba entre rondas y continuación al siguiente nivel. Falta validación en la herramienta de previsualización del portal antes de solicitar aprobación comercial. No se promete un ingreso mínimo ni aceptación.
 
 ## Pruebas
 
