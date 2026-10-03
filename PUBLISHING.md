@@ -4,11 +4,11 @@ Estado: preparación técnica, no aprobación comercial. Información consultada
 
 ## Alojamiento independiente
 
-Crear la cuenta de Cloudflare y conectar únicamente este repositorio desde Workers & Pages. Usar `node build.cjs web` y `build/web`. La propietaria debe revisar permisos y aceptar los términos. No configurar servicios de pago ni comprar un dominio sin presupuesto explícito.
+Cuenta de Cloudflare disponible. Proyecto Pages `diez-y-listo` creado; carga directa pendiente del permiso de archivos de la extensión. El código está en https://github.com/marosato/diez-y-listo . Para una futura conexión Git, conectar únicamente este repositorio desde Workers & Pages. Usar `node build.cjs web` y `build/web`. La propietaria debe revisar permisos y aceptar los términos. No configurar servicios de pago ni comprar un dominio sin presupuesto explícito.
 
 ## CrazyGames
 
-Registrar la cuenta de desarrolladora en https://developer.crazygames.com/ y completar el perfil y Billing. Estos datos y los términos debe completarlos la titular, sin compartir contraseñas ni datos bancarios en el chat.
+Cuenta de desarrolladora disponible en https://developer.crazygames.com/ . Completar el perfil y Billing. Estos datos y los términos debe completarlos la titular, sin compartir contraseñas ni datos bancarios en el chat.
 
 Subir el contenido de `build/crazygames`, con `index.html` en la raíz. Validar SDK real en la herramienta Preview: inicialización, eventos de juego, pausa/silencio durante anuncios, continuación tras error, persistencia y uso móvil. La versión española y sus portadas quedan sujetas a revisión del portal.
 
@@ -36,4 +36,4 @@ Capturas y portadas: preparar en las dimensiones vigentes solicitadas por cada p
 
 Enviar primero el proyecto mediante https://developers.poki.com/guide/share . El acceso y la aceptación no son automáticos. No reutilizar la versión con SDK CrazyGames: usar la web para evaluación y preparar una integración Poki separada si lo aceptan. Revisar condiciones y cualquier exclusividad antes de aceptar contratos o distribuir en otros portales.
 
-No se ha enviado aún ninguna solicitud ni configurado una cuenta de cobro.
+Formulario de carga preparado: Diez y listo, HTML5, Data Module y soporte móvil. Falta cargar archivos, validar Preview, completar detalles y enviar. No se ha enviado aún ninguna solicitud ni configurado una cuenta de cobro.

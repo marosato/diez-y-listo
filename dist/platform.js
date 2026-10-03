@@ -1,4 +1,4 @@
-/* CrazyGames SDK v3 adapter. Loaded only by the CrazyGames distribution. */
+/* Optional CrazyGames SDK v3 adapter. Web builds keep local storage. */
 (function(root,factory){if(typeof module==='object'&&module.exports)module.exports=factory;else root.TenPlatform=factory(root);})(typeof window==='object'?window:this,function(root){
   'use strict';
   let sdk=null,playing=false,inFlight=false,completed=0,lastAd=Date.now();
@@ -12,6 +12,12 @@
         await Promise.race([candidate.init(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(Error('SDK timeout')),8000);})]);
         if(['local','crazygames'].includes(candidate.environment))sdk=candidate;
       }catch{}finally{clearTimeout(timer);}
+    },
+    usesPortalData(){return !!root.CrazyGames;},
+    storage(){
+      if(!root.CrazyGames)return root.localStorage;
+      if(!sdk?.data)throw Error('Portal storage unavailable');
+      return sdk.data;
     },
     play(){if(!playing){playing=true;event('gameplayStart');}},
     stop(){if(playing){playing=false;event('gameplayStop');}},

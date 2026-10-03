@@ -42,6 +42,8 @@ node platform.test.cjs
 
 GitHub Actions ejecuta las pruebas y construye ambas distribuciones. Las pruebas de interfaz simulada no reemplazan dispositivos físicos ni QA del portal.
 
+En CrazyGames, el progreso usa exclusivamente el Data Module después de inicializar el SDK. Si no puede recuperarse, no se sobrescribe con una partida vacía. Los eventos locales de diagnóstico no se envían al Data Module. La web independiente conserva el guardado local.
+
 ## Datos y propiedad
 
 El juego guarda avances y hasta 1.000 eventos localmente, sin telemetría central propia. Las copias solo se comparten si la persona las entrega. La versión para portales usa servicios de terceros regidos por sus avisos y mecanismos de consentimiento. La versión web no solicita fuentes externas.

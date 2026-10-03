@@ -16,6 +16,9 @@ const assert=require('node:assert/strict'),create=require('./dist/platform.js');
     now+=120001;sdk.ad.requestAd=()=>{throw Error('SDK failed');};assert.equal(await p.betweenRounds(()=>paused++,()=>resumed++),true);assert.equal(resumed,2);
     const off=create({});await off.init();off.complete();off.complete();now+=120001;assert.equal(await off.betweenRounds(()=>{throw Error('must not pause');},()=>{}),true);
     const disabled=create({CrazyGames:{SDK:{...sdk,environment:'disabled'}}});await disabled.init();disabled.complete();disabled.complete();now+=120001;assert.equal(await disabled.betweenRounds(()=>{throw Error('must not request');},()=>{}),true);
+    const localStore={getItem:()=> 'web'};const web=create({localStorage:localStore});await web.init();assert.equal(web.storage(),localStore);
+    const cloudStore={getItem:()=> 'portal'};const portal=create({CrazyGames:{SDK:{...sdk,data:cloudStore}}});await portal.init();assert.equal(portal.storage(),cloudStore);assert.equal(portal.usesPortalData(),true);
+    const failed=create({localStorage:localStore,CrazyGames:{SDK:{init:async()=>{throw Error('offline');}}}});await failed.init();assert.throws(()=>failed.storage(),/unavailable/,'Do not replace cloud progress with a local save on failure');
     console.log('PASS: SDK unavailable/disabled, gameplay deduplication, ad cooldown, no-fill, thrown errors and duplicate callbacks.');
   }finally{Date.now=originalNow;}
 })().catch(e=>{console.error(e);process.exitCode=1;});
