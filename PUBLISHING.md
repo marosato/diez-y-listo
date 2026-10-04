@@ -30,10 +30,12 @@ English pitch: A calm number-card puzzle about planning the order of your moves.
 
 Controles: tocar o hacer clic en dos cartas. Teclado: Tab, flechas y Enter/Espacio.
 
-Capturas y portadas: preparar en las dimensiones vigentes solicitadas por cada plataforma, sin inventar imágenes de una jugabilidad diferente.
+Portadas originales preparadas y revisadas en `media/`: horizontal 1920 × 1080, vertical 800 × 1200 y cuadrada 800 × 800. No contienen marcas de otras plataformas ni material de terceros. Aún no están cargadas en el formulario. Referencia: https://docs.crazygames.com/requirements/game-covers/ .
+
+Prueba pendiente: la segunda vista de Preview espera el acceso al progreso porque otra vista conserva el bloqueo de escritura. El informe muestra «First gameplay start: No» y ninguna función del SDK detectada. Cerrar la vista duplicada, volver a ejecutar Preview y validar el juego antes de marcar la lista de QA. Las pruebas móviles y de navegadores del portal no se han certificado.
 
 ## Segundo canal: Poki
 
 Enviar primero el proyecto mediante https://developers.poki.com/guide/share . El acceso y la aceptación no son automáticos. No reutilizar la versión con SDK CrazyGames: usar la web para evaluación y preparar una integración Poki separada si lo aceptan. Revisar condiciones y cualquier exclusividad antes de aceptar contratos o distribuir en otros portales.
 
-Formulario de carga preparado: Diez y listo, HTML5, Data Module y soporte móvil. Falta cargar la carpeta build/crazygames, validar Preview, completar detalles y enviar. La conexión de la extensión se interrumpió al intentar usar el selector de carpetas; no hay envío confirmado. No se ha enviado aún ninguna solicitud ni configurado una cuenta de cobro.
+Formulario de carga preparado: Diez y listo, HTML5, Data Module y soporte móvil. Archivos cargados el 4 de octubre de 2026. CrazyGames creó la previsualización 743f6b95-055d-4519-ae28-8d782164389c y el build dd882313-0879-4e97-a812-edec39c77109. Falta completar QA, detalles y envío final. No hay envío a revisión confirmado. No se ha enviado aún ninguna solicitud ni configurado una cuenta de cobro.
