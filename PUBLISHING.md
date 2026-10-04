@@ -4,7 +4,7 @@ Estado: preparación técnica, no aprobación comercial. Información consultada
 
 ## Alojamiento independiente
 
-Cuenta de Cloudflare disponible. Proyecto Pages `diez-y-listo` creado; carga directa pendiente del permiso de archivos de la extensión. El código está en https://github.com/marosato/diez-y-listo . Para una futura conexión Git, conectar únicamente este repositorio desde Workers & Pages. Usar `node build.cjs web` y `build/web`. La propietaria debe revisar permisos y aceptar los términos. No configurar servicios de pago ni comprar un dominio sin presupuesto explícito.
+Cuenta de Cloudflare disponible. Publicado por carga directa el 4 de octubre de 2026 en https://diez-y-listo.pages.dev . Versión 2.4.1; nueve archivos cargados. Página y jugada de pareja comprobadas en navegador. El código está en https://github.com/marosato/diez-y-listo . Para una futura conexión Git, conectar únicamente este repositorio desde Workers & Pages. Usar `node build.cjs web` y `build/web`. La propietaria debe revisar permisos y aceptar los términos. No configurar servicios de pago ni comprar un dominio sin presupuesto explícito.
 
 ## CrazyGames
 
@@ -36,4 +36,4 @@ Capturas y portadas: preparar en las dimensiones vigentes solicitadas por cada p
 
 Enviar primero el proyecto mediante https://developers.poki.com/guide/share . El acceso y la aceptación no son automáticos. No reutilizar la versión con SDK CrazyGames: usar la web para evaluación y preparar una integración Poki separada si lo aceptan. Revisar condiciones y cualquier exclusividad antes de aceptar contratos o distribuir en otros portales.
 
-Formulario de carga preparado: Diez y listo, HTML5, Data Module y soporte móvil. Falta cargar archivos, validar Preview, completar detalles y enviar. No se ha enviado aún ninguna solicitud ni configurado una cuenta de cobro.
+Formulario de carga preparado: Diez y listo, HTML5, Data Module y soporte móvil. Falta cargar la carpeta build/crazygames, validar Preview, completar detalles y enviar. La conexión de la extensión se interrumpió al intentar usar el selector de carpetas; no hay envío confirmado. No se ha enviado aún ninguna solicitud ni configurado una cuenta de cobro.
