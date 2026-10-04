@@ -1,10 +1,10 @@
 # Publicación y monetización
 
-Estado: preparación técnica, no aprobación comercial. Información consultada el 3 de octubre de 2026.
+Estado: beta independiente publicada; presentación en CrazyGames pendiente. Información consultada el 4 de octubre de 2026.
 
 ## Alojamiento independiente
 
-Cuenta de Cloudflare disponible. Publicado por carga directa el 4 de octubre de 2026 en https://diez-y-listo.pages.dev . Versión 2.4.1; nueve archivos cargados. Página y jugada de pareja comprobadas en navegador. El código está en https://github.com/marosato/diez-y-listo . Para una futura conexión Git, conectar únicamente este repositorio desde Workers & Pages. Usar `node build.cjs web` y `build/web`. La propietaria debe revisar permisos y aceptar los términos. No configurar servicios de pago ni comprar un dominio sin presupuesto explícito.
+Cuenta de Cloudflare disponible. Publicado por carga directa el 4 de octubre de 2026 en https://diez-y-listo.pages.dev . Actualizado a la versión 2.5.0; diez archivos cargados y publicación confirmada en el panel. Ambos idiomas y recuperación de la partida anterior comprobados en la dirección pública. El código está en https://github.com/marosato/diez-y-listo y los paquetes en https://github.com/marosato/diez-y-listo/releases/tag/v2.5.0 . GitHub Actions aprobó el commit 2a3b1d3. Para una futura conexión Git, conectar únicamente este repositorio desde Workers & Pages. Usar `node build.cjs web` y `build/web`. La propietaria debe revisar permisos y aceptar los términos. No configurar servicios de pago ni comprar un dominio sin presupuesto explícito.
 
 ## CrazyGames
 
@@ -34,7 +34,7 @@ Portadas originales preparadas y revisadas en `media/`: horizontal 1920 × 1080,
 
 Prueba del 4 de octubre de 2026: se cerraron las vistas duplicadas. La previsualización 2.4.1 permitió completar el primer nivel y continuar al segundo. Su registro detectó `sdkInit`, `gameLoaded`, `gameFinishedLoading`, `gameplayStart` y `gameplayStop`. Indicó carga inicial de 0,3 MB y 1,9 segundos. Una recarga posterior no terminó de cargar el iframe; la recuperación del guardado en el portal sigue pendiente de verificación.
 
-Al revisar los requisitos se confirmó que el inglés es obligatorio. Se preparó la versión 2.5.0 bilingüe, con pruebas automáticas y revisión local del cambio de idioma, victoria, niveles, capas y recuperación de progreso. Se revisó la distribución móvil en ventanas 390 × 844 y 360 × 640 sin desplazamiento horizontal. Falta cargar esta versión en CrazyGames y repetir QA. No se certificaron dispositivos físicos ni Edge/Safari.
+Al revisar los requisitos se confirmó que el inglés es obligatorio. Se preparó la versión 2.5.0 bilingüe, con pruebas automáticas y revisión local del cambio de idioma, victoria, niveles, capas y recuperación de progreso. Se revisó la distribución móvil en ventanas 390 × 844 y 360 × 640 sin desplazamiento horizontal. Falta cargar esta versión en CrazyGames y repetir QA. El formulario Upload está abierto, con la selección de archivos vacía para recibir `build/crazygames`; no se guardó una carga vacía. El control requiere arrastrar la carpeta manualmente. No se certificaron dispositivos físicos ni Edge/Safari.
 
 ## Segundo canal: Poki
 
