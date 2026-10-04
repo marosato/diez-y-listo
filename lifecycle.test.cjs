@@ -36,7 +36,7 @@ ui.click('daily-mode');const dailyKey=Object.keys(data().saved).find(k=>k.includ
 for(const pair of E.solve(board).path)for(const slot of pair)ui.card(slot);
 const date=dailyKey.slice('v2:daily:'.length);assert(data().daily[date]);ui.click('share-result');
 assert(ui.byId('modal-content').innerHTML.includes('?daily='+date));assert.equal(data().events.at(-1).event,'share_opened');
-assert(data().events.every(e=>e.version==='2.4.1'&&e.sessionId));
+assert(data().events.every(e=>e.version==='2.5.0'&&e.sessionId));
 ui.click('stats-button');
 const restored={...P.migrate(null),gameVersion:'2.1.0'};
 restored.completed[12]={hints:0,undos:0,misses:0,seconds:30,date:'2026-09-30',runId:'restored'};

@@ -4,7 +4,7 @@ const assert=require('node:assert/strict'),create=require('./dist/platform.js');
   try{
     const calls=[];let callbacks;
     const sdk={environment:'crazygames',init:async()=>{},game:{gameplayStart:()=>calls.push('start'),gameplayStop:()=>calls.push('stop')},ad:{requestAd:(kind,cb)=>{calls.push(kind);callbacks=cb;}}};
-    const p=create({CrazyGames:{SDK:sdk}});await p.init();p.play();p.play();assert.deepEqual(calls,['start']);p.complete();
+    const p=create({CrazyGames:{SDK:sdk}});await p.init();assert.equal(p.locale(),null);sdk.user={systemInfo:{locale:'es_ES'}};assert.equal(p.locale(),'es_ES');p.play();p.play();assert.deepEqual(calls,['start']);p.complete();
     let paused=0,resumed=0;
     assert.equal(await p.betweenRounds(()=>paused++,()=>resumed++),true);assert.equal(paused,0);
     p.complete();now=120001;

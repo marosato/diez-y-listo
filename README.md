@@ -12,6 +12,8 @@ python -m http.server 8080 --directory dist
 
 Abrí `http://localhost:8080`. Incluye doce niveles, desafío diario, guardado local, copias exportables, deshacer y pistas opcionales. Elegir una carta no revela su pareja. La interfaz móvil centra las cartas sin moverlas después de cada jugada.
 
+Interfaz en español e inglés. En CrazyGames se utiliza el idioma del SDK y, si falta o no está disponible, el inglés. La web usa el idioma del navegador. Se puede cambiar y conservar la elección desde «Cómo jugar», disponible también en el menú móvil. La traducción incluye etiquetas accesibles, instrucciones, niveles, ayudas, resultados y copias para compartir.
+
 ## Distribuciones
 
 ```sh
@@ -28,7 +30,7 @@ En Cloudflare Pages: conectar este repositorio, rama `main`, comando `node build
 
 Se solicita un anuncio únicamente al elegir siguiente nivel o repetir tras una victoria, a partir de dos partidas completadas y con al menos dos minutos entre solicitudes. Durante la solicitud se bloquea la interacción y se suspende el audio; un error o falta de inventario permite continuar. Las pistas y deshacer siguen siendo gratuitos. Fuera de CrazyGames el SDK no se carga en la distribución web.
 
-La integración tiene pruebas automáticas con SDK simulado y una comprobación local con SDK real: anuncio de prueba entre rondas y continuación al siguiente nivel. Falta validación en la herramienta de previsualización del portal antes de solicitar aprobación comercial. No se promete un ingreso mínimo ni aceptación.
+La integración tiene pruebas automáticas con SDK simulado y una comprobación local con SDK real: anuncio de prueba entre rondas y continuación al siguiente nivel. La previsualización de CrazyGames de la versión 2.4.1 detectó inicialización y eventos de inicio y pausa; permitió completar el primer nivel. La versión bilingüe 2.5.0 requiere una nueva carga y validación en el portal. No se promete un ingreso mínimo ni aceptación.
 
 ## Pruebas
 
@@ -38,6 +40,7 @@ node progression.test.cjs
 node backup.test.cjs
 node lifecycle.test.cjs
 node platform.test.cjs
+node i18n.test.cjs
 ```
 
 GitHub Actions ejecuta las pruebas y construye ambas distribuciones. Las pruebas de interfaz simulada no reemplazan dispositivos físicos ni QA del portal.

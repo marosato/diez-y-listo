@@ -22,17 +22,19 @@ Título: Diez y listo
 
 Autora: Macarena Rosato
 
-Género: puzle de lógica y cartas. Plataforma: HTML5. Idioma actual: español.
+Género: puzle de lógica y cartas. Plataforma: HTML5. Idiomas desde la versión 2.5.0: español e inglés.
 
 Descripción breve: Combiná cartas que suman diez y elegí qué capas liberar. Doce desafíos de lógica y un tablero diario, sin reloj y con ayudas opcionales.
 
-English pitch: A calm number-card puzzle about planning the order of your moves. Match exposed cards that add up to ten to reveal deeper layers. Includes twelve handcrafted levels, a seeded daily challenge, optional hints, undo, local saves and a mobile-friendly layout. Current interface language: Spanish.
+English pitch: A calm number-card puzzle about planning the order of your moves. Match exposed cards that add up to ten to reveal deeper layers. Includes twelve handcrafted levels, a seeded daily challenge, optional hints, undo, saved progress and a mobile-friendly layout. Interface languages: English and Spanish.
 
 Controles: tocar o hacer clic en dos cartas. Teclado: Tab, flechas y Enter/Espacio.
 
 Portadas originales preparadas y revisadas en `media/`: horizontal 1920 × 1080, vertical 800 × 1200 y cuadrada 800 × 800. No contienen marcas de otras plataformas ni material de terceros. Aún no están cargadas en el formulario. Referencia: https://docs.crazygames.com/requirements/game-covers/ .
 
-Prueba pendiente: la segunda vista de Preview espera el acceso al progreso porque otra vista conserva el bloqueo de escritura. El informe muestra «First gameplay start: No» y ninguna función del SDK detectada. Cerrar la vista duplicada, volver a ejecutar Preview y validar el juego antes de marcar la lista de QA. Las pruebas móviles y de navegadores del portal no se han certificado.
+Prueba del 4 de octubre de 2026: se cerraron las vistas duplicadas. La previsualización 2.4.1 permitió completar el primer nivel y continuar al segundo. Su registro detectó `sdkInit`, `gameLoaded`, `gameFinishedLoading`, `gameplayStart` y `gameplayStop`. Indicó carga inicial de 0,3 MB y 1,9 segundos. Una recarga posterior no terminó de cargar el iframe; la recuperación del guardado en el portal sigue pendiente de verificación.
+
+Al revisar los requisitos se confirmó que el inglés es obligatorio. Se preparó la versión 2.5.0 bilingüe, con pruebas automáticas y revisión local del cambio de idioma, victoria, niveles, capas y recuperación de progreso. Se revisó la distribución móvil en ventanas 390 × 844 y 360 × 640 sin desplazamiento horizontal. Falta cargar esta versión en CrazyGames y repetir QA. No se certificaron dispositivos físicos ni Edge/Safari.
 
 ## Segundo canal: Poki
 

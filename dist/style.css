@@ -11,6 +11,7 @@
 
 /* On small screens the board is the primary surface; navigation stays in the menu. */
 .mobile-menu{display:none}
+.language-label{display:block;font-size:14px;color:#675977;margin-top:16px}#language-choice{width:100%;min-height:48px;margin-top:6px;padding:10px;border:1px solid #d8cbe7;border-radius:10px;background:#fff;font:inherit;color:#49365f}#language-choice:focus-visible{outline:3px solid #7852ae;outline-offset:3px}
 @media(max-width:700px){
   .mobile-menu{display:block;min-height:44px;padding:0 12px;border:1px solid var(--border);border-radius:12px;background:white;color:#604780;font-size:14px}
   .site-header{height:58px;padding:0 12px}.brand{font-size:20px;gap:8px}.brand-icon{width:29px;height:34px}.header-right{gap:6px}#help-button{display:none}

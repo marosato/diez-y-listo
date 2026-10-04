@@ -1,5 +1,8 @@
 (()=>{'use strict';
-const E=window.TenGame,P=window.TenProgress,$=id=>document.getElementById(id),KEY='diez-y-listo-v1',VERSION='2.4.1';
+const E=window.TenGame,P=window.TenProgress,$=id=>document.getElementById(id),KEY='diez-y-listo-v1',VERSION='2.5.0';
+const I=window.TenLocale,T=text=>I?I.text(text):text;
+function localize(root=document.body){if(!I)return;I.localize(root);document.documentElement.lang=I.language;document.title=I.language==='es'?'Diez y listo · Un pequeño momento para jugar':'Diez y listo · A little moment to play';}
+if(I){I.setLocale(window.CrazyGames?'en':window.navigator.language);localize();}
 const platform=window.TenPlatform;let adBusy=false;
 const colors=[null,[0xffebcc,'#ab7231'],[0xdaeff8,'#548cad'],[0xfbe0e7,'#b76886'],[0xe4defa,'#8864b4'],[0xd6ede2,'#58957b'],[0xffe6d4,'#b57955'],[0xebddf8,'#9566b9'],[0xdbecf9,'#638cba'],[0xf6e9c9,'#ad9149']];
 const marks=['','✦','●','♥','◆','✿','✦','◆','●','✿'];
@@ -11,9 +14,9 @@ const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMon
 const levelNow=()=>{let n=1;while(store.completed[n]&&n<P.levels.length)n++;return n;};
 const recordFor=()=>mode==='daily'?store.daily[state.date]:store.completed[state.level];
 const escapeHtml=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-function save(){if(!ownsSave||!saveLoaded)return;try{const target=platform?.storage?.()||localStorage;target.setItem(KEY,JSON.stringify(platform?.usesPortalData?.()?{...store,events:[]}:store));storageOK=true;}catch{storageOK=false;$('save-notice').hidden=false;$('save-notice').textContent='No pudimos guardar. Descargá una copia desde Tu progreso antes de cerrar.';}}
+function save(){if(!ownsSave||!saveLoaded)return;try{const target=platform?.storage?.()||localStorage;target.setItem(KEY,JSON.stringify(platform?.usesPortalData?.()?{...store,events:[]}:store));storageOK=true;}catch{storageOK=false;$('save-notice').hidden=false;$('save-notice').textContent=T('No pudimos guardar. Descargá una copia desde Tu progreso antes de cerrar.');}}
 function track(event,data={}){store.events.push({event,at:new Date().toISOString(),version:VERSION,sessionId,runId:state?.runId,board:state?.key,mode,level:state?.level,...data});store.events=store.events.slice(-1000);save();}
-function toast(message){$('toast').textContent=message;$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3200);}
+function toast(message){$('toast').textContent=T(message);$('toast').classList.add('show');clearTimeout(toastTimer);toastTimer=setTimeout(()=>$('toast').classList.remove('show'),3200);}
 function elapsed(){return activeMs+(suspended||document.hidden?0:Date.now()-activeSince);}
 function persist(){if(state&&E.remaining(state.stacks)>0){state.elapsed=elapsed();store.saved[state.key]={...state,stacks:E.clone(state.stacks)};}save();}
 function pause(reason){if(state&&!busy){track('game_pause',{reason,remaining:E.remaining(state.stacks)});persist();}}
@@ -87,7 +90,7 @@ function render(){
   $('card-controls').replaceChildren();state.stacks.forEach((s,i)=>{if(!s.length)return;const p=pos(i),b=document.createElement('button');b.className='card-hit';b.dataset.slot=i;b.style.cssText=`left:${p.x/480*100}%;top:${p.y/470*100}%;width:${p.w/480*100}%;height:${p.h/470*100}%`;b.setAttribute('aria-label',`Carta ${s.at(-1)}, fila ${Math.floor(i/4)+1}, columna ${i%4+1}${s.length>1?`, debajo en orden: ${s.slice(0,-1).reverse().join(', ')}`:''}`);b.setAttribute('aria-pressed',selected===i);b.disabled=busy;b.onclick=()=>choose(i);b.onkeydown=e=>{const steps={ArrowRight:1,ArrowLeft:-1,ArrowDown:4,ArrowUp:-4},step=steps[e.key];if(step){e.preventDefault();for(let j=i+step;j>=0&&j<16;j+=step){const target=document.querySelector(`[data-slot="${j}"]`);if(target){target.focus();break;}}}};$('card-controls').append(b);});
   const wins=P.levels.filter(l=>store.completed[l.id]).length,thresholds=[1,3,5,8,10,12],symbols=['✦','❀','◆','☀','✧','✿'];$('milestones').replaceChildren();thresholds.forEach((t,i)=>{const a=document.createElement('span');a.className='medal'+(wins>=t?' earned':'');a.textContent=symbols[i];a.title=`${t} niveles completados`;$('milestones').append(a);});
   $('collection-count').textContent=`${wins} / 12`;$('collection-caption').textContent=wins===12?'Recorrido completo. Elegí un nivel para volver a disfrutarlo.':`${wins} de 12 niveles completados.`;
-  $('daily-caption').textContent=store.daily[today()]?'Completado por hoy ✓':'Una nueva combinación';scene?.paint();
+  $('daily-caption').textContent=store.daily[today()]?'Completado por hoy ✓':'Una nueva combinación';scene?.paint();localize();
 }
 function choose(i){
   if(adBusy||busy||!Number.isInteger(i)||!state.stacks[i]?.length)return false;
@@ -103,7 +106,7 @@ function choose(i){
 }
 function undo(){if(!state.history.length||busy)return;state.stacks=state.history.pop();state.undos++;selected=null;hinted=[];track('undo');render();persist();}
 function hint(){if(busy)return;const result=E.solve(state.stacks);if(!result.path?.length){track('hint_unavailable',{exhausted:result.exhausted});toast(result.exhausted?'No encontramos una pista todavía. Podés deshacer.':'Este camino quedó cerrado. Deshacé una pareja.');return;}hinted=result.path[0];selected=null;state.hints++;track('hint');render();persist();}
-function dialog(html){platform?.stop();$('modal-content').innerHTML=html;if(!$('modal').open)$('modal').showModal();}
+function dialog(html){platform?.stop();$('modal-content').innerHTML=html;localize($('modal-content'));if(!$('modal').open)$('modal').showModal();}
 function close(){if($('modal').open)$('modal').close();if(state&&!busy&&!document.hidden&&!adBusy)platform?.play();}
 function afterRound(action){
   if(adBusy)return;
@@ -130,11 +133,11 @@ function showLevels(){
   document.querySelectorAll('[data-level]').forEach(b=>b.onclick=()=>{track('level_selected',{targetLevel:Number(b.dataset.level)});close();start('journey',{level:Number(b.dataset.level),reason:'level_picker'});});$('picker-close').onclick=()=>{close();if(busy)winReturn();};
 }
 function winReturn(){start(mode,{level:state.level,date:state.date,reset:true,reason:'replay'});}
-function showHelp(){dialog('<span class="modal-icon">✧</span><h2>Elegí, liberá, conectá.</h2><ol><li>Seleccioná dos cartas grandes que <strong>sumen 10</strong>.</li><li>Debajo de cada carta, <strong>↓ 1 → 5</strong> indica que vas a liberar primero un 1 y después un 5.</li><li>Si hay dos cartas iguales, mirá cuál libera la que necesitás.</li></ol><p>Una estrella por completar, dos si no usás pistas y tres si además no deshacés. Es opcional: todas las ayudas son gratuitas.</p><button class="secondary-button" id="layer-demo">Probar cómo funcionan las capas</button><button class="primary-button" id="help-close">A jugar</button>');$('layer-demo').onclick=showLayers;$('help-close').onclick=()=>{store.seenTutorial=true;track('tutorial_complete');close();};}
+function showHelp(){dialog('<span class="modal-icon">✧</span><h2>Elegí, liberá, conectá.</h2><ol><li>Seleccioná dos cartas grandes que <strong>sumen 10</strong>.</li><li>Debajo de cada carta, <strong>↓ 1 → 5</strong> indica que vas a liberar primero un 1 y después un 5.</li><li>Si hay dos cartas iguales, mirá cuál libera la que necesitás.</li></ol><p>Una estrella por completar, dos si no usás pistas y tres si además no deshacés. Es opcional: todas las ayudas son gratuitas.</p><label class="language-label" for="language-choice">Idioma</label><select id="language-choice"><option value="es">Español</option><option value="en">English</option></select><button class="secondary-button" id="layer-demo">Probar cómo funcionan las capas</button><button class="primary-button" id="help-close">A jugar</button>');if(I){$('language-choice').value=I.language;$('language-choice').onchange=event=>{store.language=I.setLocale(event.target.value);save();render();showHelp();};}$('layer-demo').onclick=showLayers;$('help-close').onclick=()=>{store.seenTutorial=true;track('tutorial_complete');close();};}
 function showLayers(){
   dialog('<span class="eyebrow">PROBÁ SIN CAMBIAR TU PARTIDA</span><h2>¿Qué aparece debajo?</h2><p>El 7 tiene un 1 debajo. Tocá el 7 y el 3 para sumar 10 y descubrirlo.</p><div class="layer-demo"><button id="demo-seven" class="demo-card" aria-label="Seleccionar 7, debajo hay un 1">7<small>↓ 1</small></button><span>+</span><button id="demo-three" class="demo-card" aria-label="Seleccionar 3">3</button></div><p id="demo-status" role="status">Primero tocá el 7.</p><button class="primary-button" id="demo-close">Volver al tablero</button>');
-  let first=false;$('demo-seven').onclick=()=>{first=true;$('demo-seven').setAttribute('aria-pressed','true');$('demo-status').textContent='Ahora tocá el 3.';};
-  $('demo-three').onclick=()=>{if(!first){$('demo-status').textContent='Primero elegí el 7.';return;}$('demo-seven').textContent='1';$('demo-seven').setAttribute('aria-label','Se liberó el 1');$('demo-seven').disabled=true;$('demo-three').disabled=true;$('demo-three').textContent='✓';$('demo-status').textContent='¡Se liberó el 1! Ahora puede formar pareja con un 9.';store.seenLayers=true;track('layers_demo_complete');};
+  let first=false;$('demo-seven').onclick=()=>{first=true;$('demo-seven').setAttribute('aria-pressed','true');$('demo-status').textContent=T('Ahora tocá el 3.');};
+  $('demo-three').onclick=()=>{if(!first){$('demo-status').textContent=T('Primero elegí el 7.');return;}$('demo-seven').textContent='1';$('demo-seven').setAttribute('aria-label',T('Se liberó el 1'));$('demo-seven').disabled=true;$('demo-three').disabled=true;$('demo-three').textContent='✓';$('demo-status').textContent=T('¡Se liberó el 1! Ahora puede formar pareja con un 9.');store.seenLayers=true;track('layers_demo_complete');};
   $('demo-close').onclick=()=>{store.seenLayers=true;save();close();};
 }
 function showStats(){
@@ -156,10 +159,10 @@ function importBackup(file){
 }
 function shareDaily(date){
   const r=store.daily[date];if(!r)return;const url=new URL(location.href);url.search='';url.hash='';url.searchParams.set('daily',date);
-  const text=`Diez y listo · ${date}\n${'★'.repeat(P.starsFor(r))} · ${r.hints} pistas · ${r.undos} deshacer\n¿Probás el mismo tablero? ${url.href}`;
+  const text=T(`Diez y listo · ${date}\n${'★'.repeat(P.starsFor(r))} · ${r.hints} pistas · ${r.undos} deshacer\n¿Probás el mismo tablero? ${url.href}`);
   dialog(`<h2>Tu resultado para compartir</h2><p>Copiá el texto y elegí con quién compartirlo. El enlace conserva los permisos de acceso del sitio.</p><textarea class="share-text" readonly aria-label="Resultado para copiar">${escapeHtml(text)}</textarea><button class="primary-button" id="copy-text">Copiar texto</button><p id="copy-status" role="status"></p><button class="secondary-button" id="copy-close">Ver mi progreso</button>`);
   track('share_opened',{date});$('copy-close').onclick=showStats;
-  $('copy-text').onclick=async()=>{try{await navigator.clipboard.writeText(text);track('result_copied',{date});$('copy-status').textContent='Copiado. Ya podés pegarlo donde quieras.';}catch{$('copy-status').textContent='Seleccioná el texto de arriba para copiarlo manualmente.';}};
+  $('copy-text').onclick=async()=>{try{await navigator.clipboard.writeText(text);track('result_copied',{date});$('copy-status').textContent=T('Copiado. Ya podés pegarlo donde quieras.');}catch{$('copy-status').textContent=T('Seleccioná el texto de arriba para copiarlo manualmente.');}};
 }
 function showMenu(){
   dialog('<h2>Tu partida</h2><button class="secondary-button" id="menu-journey">Tu recorrido</button><button class="secondary-button" id="menu-daily">Desafío del día</button><button class="secondary-button" id="menu-levels">Elegir nivel</button><button class="secondary-button" id="menu-stats">Ver mi progreso</button><button class="secondary-button" id="menu-help">Cómo jugar</button><button class="primary-button" id="menu-close">Volver al tablero</button>');
@@ -171,7 +174,7 @@ $('mobile-menu').onclick=showMenu;
 $('journey-mode').onclick=()=>{close();start('journey',{reason:'mode_switch'});};$('daily-mode').onclick=()=>{close();start('daily',{reason:'mode_switch'});};
 $('levels-button').onclick=showLevels;$('undo-button').onclick=undo;$('hint-button').onclick=hint;$('help-button').onclick=showHelp;$('stats-button').onclick=showStats;
 $('restart-button').onclick=()=>{if(busy)return;dialog('<h2>¿Empezamos de nuevo?</h2><p>Reiniciarás este tablero. Tus mejores resultados se conservan.</p><button class="primary-button" id="confirm-restart">Reiniciar esta partida</button><button class="secondary-button" id="cancel-restart">Seguir jugando</button>');$('confirm-restart').onclick=()=>{close();start(mode,{level:state.level,date:state.date,reset:true,reason:'restart'});};$('cancel-restart').onclick=close;};
-function soundLabel(){$('sound-button').setAttribute('aria-pressed',String(store.sound));$('sound-button').setAttribute('aria-label',store.sound?'Desactivar sonido':'Activar sonido');$('sound-button').title=store.sound?'Desactivar sonido':'Activar sonido';}
+function soundLabel(){$('sound-button').setAttribute('aria-pressed',String(store.sound));$('sound-button').setAttribute('aria-label',T(store.sound?'Desactivar sonido':'Activar sonido'));$('sound-button').title=T(store.sound?'Desactivar sonido':'Activar sonido');}
 $('sound-button').onclick=()=>{store.sound=!store.sound;soundLabel();save();beep();};soundLabel();
 $('modal').addEventListener('close',()=>{if(state&&!busy&&!document.hidden&&!adBusy)platform?.play();});
 $('modal').addEventListener('cancel',e=>{if(adBusy){e.preventDefault();return;}if(busy){e.preventDefault();showLevels();}});
@@ -183,6 +186,7 @@ window.addEventListener('pagehide',()=>{if(state)suspend();ownsSave=false;releas
 window.addEventListener('pageshow',event=>{if(event.persisted)location.reload();});
 function boot(){
   try{store=P.migrate(JSON.parse((platform?.storage?.()||localStorage).getItem(KEY)||'null'));saveLoaded=true;}catch{store=P.migrate(null);storageOK=false;saveLoaded=false;$('save-notice').hidden=false;$('save-notice').textContent='No pudimos recuperar el progreso. Jugá temporalmente o recargá para intentar recuperarlo; no sobrescribiremos tus partidas.';}
+  if(I){I.setLocale(store.language||((platform?.usesPortalData?.())?(platform.locale?.()||'en'):window.navigator.language));localize();}
   document.querySelector('main').inert=false;document.querySelector('header').inert=false;
   $('tab-notice').hidden=true;soundLabel();track('session_start');const linkedDate=new URLSearchParams(location.search).get('daily');start(validDate(linkedDate)?'daily':'journey',{date:linkedDate,reason:validDate(linkedDate)?'shared_link':'open'});
 }

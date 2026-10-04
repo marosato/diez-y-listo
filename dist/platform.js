@@ -13,6 +13,7 @@
         if(['local','crazygames'].includes(candidate.environment))sdk=candidate;
       }catch{}finally{clearTimeout(timer);}
     },
+    locale(){try{return sdk?.user?.systemInfo?.locale||null;}catch{return null;}},
     usesPortalData(){return !!root.CrazyGames;},
     storage(){
       if(!root.CrazyGames)return root.localStorage;
