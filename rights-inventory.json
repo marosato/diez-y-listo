@@ -1,0 +1,102 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-04",
+  "gameVersion": "2.5.0",
+  "basisCommit": "e0249ac",
+  "scope": "Files reviewed technically; see RIGHTS-AND-COSTS.md for provenance, permissions and unresolved checks.",
+  "legalClearanceGuaranteed": false,
+  "newSpendingAuthorized": 0,
+  "currency": "No paid spending authorized in any currency",
+  "files": [
+    {
+      "path": "build.cjs",
+      "bytes": 787,
+      "sha256": "5d5763a2464410c4a53f90cbaf1f921de5751e3fe30ba517c4075012bf9d4d59"
+    },
+    {
+      "path": "dist/app.js",
+      "bytes": 29911,
+      "sha256": "b2bf056a7b2d9ede98dc035ef7cd0d15f8c7318be41cae1609e74dd46190c32b"
+    },
+    {
+      "path": "dist/backup.js",
+      "bytes": 2842,
+      "sha256": "48d8bac23a581cd9214a54231d92ccdfe49f55ec9c48378271e75b14ec0c32b9"
+    },
+    {
+      "path": "dist/engine.js",
+      "bytes": 2658,
+      "sha256": "ae1c9bc801248e2e66db9494bd0a771d383b6ea9b0d4bc8a5923befa260476cb"
+    },
+    {
+      "path": "dist/i18n.js",
+      "bytes": 15227,
+      "sha256": "c661bfcc50e9f8fa2c1a6fcb17d17edaa87eebcf72b26b23f6f7c3e7061d41ab"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 5687,
+      "sha256": "676be4b02cd1d798e4a9fb101f65938a153aa4fc7cb500ff7409fad80fc371ed"
+    },
+    {
+      "path": "dist/platform.js",
+      "bytes": 1802,
+      "sha256": "995a73af1fb0b7f8ca168a72993416589febd0efeb73d7f263f2a400d782b942"
+    },
+    {
+      "path": "dist/progression.js",
+      "bytes": 3569,
+      "sha256": "50b981ef64b18c94f6df279b13333c1cdf4a2cee9a6074dd46d3df31dbb6ca59"
+    },
+    {
+      "path": "dist/style.css",
+      "bytes": 14525,
+      "sha256": "82cb4fe5f9994e74d72bf4568b236a4e5df9228e819e415869f02f131c50fb3d"
+    },
+    {
+      "path": "dist/vendor/PHASER-LICENSE.txt",
+      "bytes": 1120,
+      "sha256": "080f3d5539e766bb556df5b8e86c4f5d581ece35c692b80956ca352b84d29134"
+    },
+    {
+      "path": "dist/vendor/phaser.min.js",
+      "bytes": 1196122,
+      "sha256": "e92ddef111ba42e92d316979c732311757093688ea1810591cb7aa2858eba7a7"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 347,
+      "sha256": "894445d736ffc666cf698bc95823789895f21d891705173c1ece37b732dde5e8"
+    },
+    {
+      "path": "media/cover-landscape.png",
+      "bytes": 121340,
+      "sha256": "fec91977eeb1f854aec105bf08854f49e62753b2fc53f1ac847f8bf50d6d8d3d"
+    },
+    {
+      "path": "media/cover-portrait.png",
+      "bytes": 76601,
+      "sha256": "82ed1184200a18965f47787f854dd278411fea4b66eb37bc2c01b5306ec7f4b2"
+    },
+    {
+      "path": "media/cover-square.png",
+      "bytes": 70510,
+      "sha256": "c96354f7596b28a76914a21a718c03c8feeea28e3fa7f6ccb77bf21ba4bb40bd"
+    },
+    {
+      "path": "media/generate_covers.py",
+      "bytes": 2431,
+      "sha256": "488a7d4b6c4d6d9c04793664936c1d2e6dc9608ccf2b4d8ba2ac325eafd89c21"
+    },
+    {
+      "path": "media/preview-landscape.mp4",
+      "bytes": 364316,
+      "sha256": "cf978f2b6949ddc168edad487df491f7d9bcbed360ae2310518bae2ee370c1b0"
+    },
+    {
+      "path": "media/preview-portrait.mp4",
+      "bytes": 139888,
+      "sha256": "2daa79a99a75416fb0b0de3c47edfcc03c79bc7a3278f52bb12048c394468c91"
+    }
+  ]
+}

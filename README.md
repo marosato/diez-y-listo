@@ -54,3 +54,8 @@ El juego guarda avances y hasta 1.000 eventos localmente, sin telemetría centra
 Al cambiar de dominio, el navegador no transfiere el progreso automáticamente: descargar una copia en el origen y recuperarla desde «Ver mi progreso» en el destino.
 
 Código original con derechos reservados; ver `LICENSE`. Phaser 3.90.0 conserva su licencia MIT en `dist/vendor/PHASER-LICENSE.txt`.
+
+La prioridad permanente es minimizar reclamos y gastos, con presupuesto cero
+para nuevos gastos hasta autorización específica. Ver [registro de recursos y
+condiciones](RIGHTS-AND-COSTS.md) y [reglas del proyecto](AGENTS.md). La revisión
+documentada no es una garantía de ausencia de reclamos ni de descuentos.

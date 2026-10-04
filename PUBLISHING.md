@@ -2,6 +2,13 @@
 
 Estado: beta independiente publicada; presentación en CrazyGames pendiente. Información consultada el 4 de octubre de 2026.
 
+Regla permanente solicitada por la titular: minimizar reclamos y descuentos,
+y no generar nuevos gastos sin autorización específica. Antes de una nueva
+publicación o cambio comercial, consultar `AGENTS.md` y `RIGHTS-AND-COSTS.md`.
+El inventario no certifica ausencia de reclamos ni modifica el contrato del
+portal. La titular informó en el chat que aceptó los términos; el estado final
+del envío aún requiere comprobación en el portal.
+
 ## Alojamiento independiente
 
 Cuenta de Cloudflare disponible. Publicado por carga directa el 4 de octubre de 2026 en https://diez-y-listo.pages.dev . Actualizado a la versión 2.5.0; diez archivos cargados y publicación confirmada en el panel. Ambos idiomas y recuperación de la partida anterior comprobados en la dirección pública. El código está en https://github.com/marosato/diez-y-listo y los paquetes en https://github.com/marosato/diez-y-listo/releases/tag/v2.5.0 . GitHub Actions aprobó el commit 2a3b1d3. Para una futura conexión Git, conectar únicamente este repositorio desde Workers & Pages. Usar `node build.cjs web` y `build/web`. La propietaria debe revisar permisos y aceptar los términos. No configurar servicios de pago ni comprar un dominio sin presupuesto explícito.
